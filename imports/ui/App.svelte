@@ -1,24 +1,30 @@
 <script>
-  let counter = 0;
-  const addToCounter = () => {
-    counter += 1;
-  }
+import { Meteor } from 'meteor/meteor';
+import '/imports/api/s3Methods'; 
+import { ItemsCollection } from '../api/ItemsCollection'
+import ItemForm from './ItemForm.svelte';
+import ItemList from './ItemList.svelte';
+
+
+ 
+    /*
+    Meteor.call('getImageURL', url)
+    console.log(url);
+    */
+    
+
+    
+
+    /*
+    {#if files}
+        <button on:click={handleSubmit}>Submit</button>
+    {:else}
+        <button on:click={handleSubmit} disabled>Submit</button>
+    {/if}
+    
+    */
+  
 </script>
 
-
-<div class="container">
-  <h1>Current Inventory</h1>
-  
-
-  <button on:click={addToCounter}>Click Me</button>
-  <p>You've pressed the button {counter} times.</p>
-
-  <form id= "imageForm">
-    <input id="imageInput" type="file" accept="image/*">
-    <button type="submit">Upload</button>
-  </form>
-
-  <ul>
-    
-  </ul>
-</div>
+<ItemForm />
+<ItemList />
