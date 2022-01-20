@@ -1,6 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
 import { ItemsCollection } from './ItemsCollection'
 
 Meteor.methods({
@@ -11,8 +9,9 @@ Meteor.methods({
         ItemsCollection.update({name: items.name}, {$inc: {count: items.count}}, {upsert: true} )
     },
     'items.remove'(items){
-        ItemsCollection.remove(this._id)
         //  removing
+        console.log(items.name)
+        ItemsCollection.remove({name: items.name})
     }
 
 });
