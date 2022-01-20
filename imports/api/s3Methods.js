@@ -14,7 +14,7 @@ dotenv.config;
 //  Define AWS S3 bucket details and access keys
 const awsRegion = "us-east-2"
 const S3bucketName = "duy-ngo-shopify-inventory-images"
-const accessKey = 'AKIA237WFNJ2OKFRQYWQ'
+const accessKey = ''
 const secretAccessKey = process.env.AWS_S3_PUT_SECRET_ACCESS_KEY
 
 
