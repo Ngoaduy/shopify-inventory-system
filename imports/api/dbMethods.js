@@ -1,6 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { ItemsCollection } from './ItemsCollection'
 
+let newItems = {
+    name: "",
+    count: 0
+}
+
 Meteor.methods({
     'items.insert'(items) {  
         //  Inserting
@@ -12,6 +17,24 @@ Meteor.methods({
         //  removing
         console.log(items.name)
         ItemsCollection.remove({name: items.name})
-    }
+    },
+    'items.edit'([items, newItems])
+    {
+        //  editing
+        console.log(newItems.name)
+        ItemsCollection.update({name: items.name}, {
+                                $set: { name: newItems.name }
+                            }
+                        );
+        ItemsCollection.update({count: items.count}, {
+                                $set: { count: newItems.count }
+                        }
+                    );
+                        
+    },
+    'items.shipment'(items) {    
+        ItemsCollection.update({name: items.name}, {$inc: {count: -items.count}}, {upsert: false} )
+    },
+
 
 });
